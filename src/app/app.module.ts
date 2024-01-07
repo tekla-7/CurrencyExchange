@@ -3,17 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HttpComponent } from './http/http.component';
-import {ReactiveFormsModule} from '@angular/forms'
+import {FormsModule ,ReactiveFormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './form/form.component';
+import { UserComponent } from './form/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HttpComponent
+    HttpComponent,
+    FormComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

@@ -1,0 +1,9 @@
+@if (user) {
+    <a class="list-group-item bb-5" (click)="onClickItem()">
+        <div><span class="bb"> E-mail: </span>{{ user.email }}</div>
+        <div><span class="bb"> Password: </span> {{ user.password }}</div>
+        <div><span class="bb"> Nickname: </span> {{ user.nickname }}</div>
+        <div><span class="bb"> Phone: </span> {{ user.phone }}</div>
+        <div><span class="bb"> Website:</span> {{ user.website }}</div>
+      </a>
+}

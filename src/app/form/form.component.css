@@ -1,0 +1,27 @@
+input.ng-dirty.ng-invalid {
+    border: 2px solid red;
+  }
+.mb{
+    margin-bottom: 25px;
+}
+.mt{
+    margin-top: 50px;
+}
+.bb{
+    font-size: 15px;
+    font-weight: bolder;
+}
+.bb-5{
+    border-bottom: 20px;
+    border-bottom: solid;
+}
+.flex{
+   display: flex;
+   flex-direction:row;
+   width: 70%;
+justify-content:space-between;
+align-items: center;
+}
+.flex input{
+    width: 70%;
+}
