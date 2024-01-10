@@ -1,0 +1,70 @@
+<div class="center">
+  <div class="row">
+    <form [formGroup]="employee" (ngSubmit)="submit()">
+      <div class="form-group flex">
+        <label for="name">Name: </label>
+        <input
+          type="name"
+          id="name"
+          class="form-controol"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group flex">
+        <label for="salary">Salary</label>
+        <input
+          type="number"
+          id="salary"
+          class="form-controol"
+          formControlName="salary"
+        />
+      </div>
+      <div class="form-group flex">
+        <label for="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          class="form-controol"
+          formControlName="age"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary mb">
+        <!-- {{ editMode ? "Update" : "Register" }} -->
+        Register
+      </button>
+      <!-- *ngIf="arrEmp.length && showlist" -->
+      <div class="row">
+        <ul class="list-group w">
+          <ng-container *ngFor="let emp of pageinatedData; let i = index">
+            <app-employees
+              [emp]="emp"
+              (clickItem)="onEditItem(i)"
+            ></app-employees>
+          </ng-container>
+        </ul>
+      </div>
+      <app-pagination
+        [totalItem]="totalItem"
+        [itemsPerPage]="itemsPerPage"
+        [currentPage]="currentPage"
+        (onClick)="cangePage($event)"
+      ></app-pagination>
+    </form>
+    <button
+      type="button"
+      class="btn btn-primary col-md-offset-2"
+      *ngIf="showUpdateEmployeeButton"
+      (click)="UpdateEmployee()"
+    >
+      update employee
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary col-md-offset-2"
+      *ngIf="showUpdateEmployeeButton"
+      (click)="DelateEmployee()"
+    >
+      Delate employee
+    </button>
+  </div>
+</div>

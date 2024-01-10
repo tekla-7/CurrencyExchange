@@ -77,13 +77,11 @@
     </div>
     <div class="row" *ngIf="arr.length">
       <ul class="list-group">
-        
         <ng-container *ngFor="let user of arr; let i = index">
           <app-user [user]="user"
                     (clickItem)="onEditItem(i)"
           ></app-user>
          </ng-container>
-       
       </ul>
     </div>
     <button

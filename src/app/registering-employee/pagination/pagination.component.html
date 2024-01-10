@@ -1,0 +1,35 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{disabled:currentPage==1}">
+      <a
+        class="page-link"
+        style="cursor: pointer"
+        href="#"
+        aria-label="Previous"
+        (click)="pageClicked(currentPage - 1)"
+      >
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li
+      class="page-item"
+      [ngClass]="{ active: page == currentPage }"
+      *ngFor="let page of pages"
+      (click)="pageClicked(page)"
+    >
+      <a class="page-link" href="javascript:void(0)">{{ page }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{disabled:currentPage==totalPageNumber}">
+      <a
+        class="page-link"
+        href="#"
+        style="cursor: pointer"
+        (click)="pageClicked(currentPage + 1)"
+        
+        aria-label="Next"
+      >
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
