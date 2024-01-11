@@ -9,11 +9,14 @@ import { AddEmployeeService } from '../add-employee.service';
 export class PaginationComponent implements OnInit {
   @Input() totalItem: any;
   @Input() currentPage: any;
+  @Input() page: any;
   @Input() itemsPerPage: any;
   @Output() onClick: EventEmitter<number> = new EventEmitter();
   totalPageNumber: any;
   pages: any[] = [];
-  constructor(private http: AddEmployeeService) {}
+  constructor(private http: AddEmployeeService) {
+    this.updatePagination();
+  }
   ngOnInit() {
     this.updatePagination();
   }
@@ -22,13 +25,11 @@ export class PaginationComponent implements OnInit {
       this.onClick.emit(page);
     }
   }
-  updatePagination():any{
-    this.http.getlist().subscribe((el) => {
-      this.totalPageNumber = el.length / this.itemsPerPage;
-      this.pages = Array.from(
-        { length: this.totalPageNumber },
-        (_, i) => i + 1
-      );
-    });
+  ngOnChanges() {
+    this.updatePagination();
+  }
+  updatePagination(): any {
+    this.totalPageNumber = Math.ceil(this.page / this.itemsPerPage);
+    this.pages = Array.from({ length: this.totalPageNumber }, (_, i) => i + 1);
   }
 }

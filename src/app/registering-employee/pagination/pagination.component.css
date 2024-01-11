@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid-template-rows: [height of top elements] 1fr;
+  justify-items: center;
+}
+
+.bottom-element {
+  grid-row: 2;
+}

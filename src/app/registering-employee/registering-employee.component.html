@@ -28,12 +28,28 @@
           formControlName="age"
         />
       </div>
-      <button type="submit" class="btn btn-primary mb">
+      <div class="btn-group">
+      <button type="submit" class="btn btn-primary " aria-current="page">
         <!-- {{ editMode ? "Update" : "Register" }} -->
         Register
-      </button>
+      </button> 
+      <button
+      type="button"
+      class="btn btn-primary"
+      (click)="UpdateEmployee()"
+    >
+      update employee
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="DelateEmployee()"
+    >
+      Delate employee
+    </button>
+  </div>
       <!-- *ngIf="arrEmp.length && showlist" -->
-      <div class="row">
+      <div class="row height">
         <ul class="list-group w">
           <ng-container *ngFor="let emp of pageinatedData; let i = index">
             <app-employees
@@ -44,27 +60,12 @@
         </ul>
       </div>
       <app-pagination
-        [totalItem]="totalItem"
         [itemsPerPage]="itemsPerPage"
         [currentPage]="currentPage"
+        [page]="page"
         (onClick)="cangePage($event)"
       ></app-pagination>
     </form>
-    <button
-      type="button"
-      class="btn btn-primary col-md-offset-2"
-      *ngIf="showUpdateEmployeeButton"
-      (click)="UpdateEmployee()"
-    >
-      update employee
-    </button>
-    <button
-      type="button"
-      class="btn btn-primary col-md-offset-2"
-      *ngIf="showUpdateEmployeeButton"
-      (click)="DelateEmployee()"
-    >
-      Delate employee
-    </button>
+   
   </div>
 </div>

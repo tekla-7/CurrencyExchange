@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AddEmployeeService {
+  
   constructor(private http: HttpClient) {}
   add(postData: any) {
     return this.http.post<any>('http://localhost:3000/employees', postData);
