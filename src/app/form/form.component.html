@@ -1,79 +1,5 @@
 <div class="container mt">
-  <div class="row">
-    <div class="col-xs-10 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form [formGroup]="projectForm" (ngSubmit)="login()">
-        <div class="form-group flex">
-          <label for="email">E-mail: </label>
-          <input
-            type="email"
-            id="email"
-            class="form-controol"
-            formControlName="email"
-          />
-        </div>
-        <div class="form-group flex">
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            class="form-controol"
-            formControlName="password"
-          />
-        </div>
-        <div class="form-group flex">
-          <label for="ConfirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="ConfirmPassword"
-            class="form-controol"
-            formControlName="confirmpassword"
-          />
-        </div>
-        <div class="form-group flex">
-          <label for="nickname">Nickname:</label>
-          <input
-            type="text"
-            id="nickname"
-            class="form-controol"
-            formControlName="nickname"
-          />
-        </div>
-        <div class="form-group flex">
-          <label for="phone">Phone Number:</label>
-          <input
-            type="text"
-            id="phone"
-            class="form-controol"
-            formControlName="phone"
-          />
-        </div>
-        <div class="form-group flex">
-          <label for="website">Website:</label>
-          <input
-            type="url"
-            id="website"
-            class="form-controol"
-            formControlName="website"
-          />
-        </div>
-        <div class="form-group">
-          <label class="checkbox-inline">
-            <input
-              type="checkbox"
-              formControlName="checkbox"
-              ngModel
-              required
-              [attr.disabled]="editMode ? true : null"
-            />
-            <p>i have read the <span style="color: blue">agreement</span></p>
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary mb">
-          {{ editMode ? "Update" : "Register" }}
-        </button>
-      </form>
-    </div>
-  </div>
+ 
   <div class="row" *ngIf="arr.length">
     <ul class="list-group">
       <ng-container *ngFor="let user of arr; let i = index">
@@ -84,12 +10,5 @@
       </ng-container>
     </ul>
   </div>
-  <button
-    type="submit"
-    class="btn btn-primary col-md-offset-2"
-    *ngIf="editMode"
-    (click)="removeUser()"
-  >
-    remove user
-  </button>
+  
 </div>

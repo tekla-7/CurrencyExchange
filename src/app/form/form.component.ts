@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
   removeuser = false;
   arr :UserDataType[]= [];
   i: number=0;
+  editId:any;
   project :UserDataType= {};
   ngOnInit(): void {}
   constructor(private edit:HttpClient){
@@ -69,9 +70,9 @@ export class FormComponent implements OnInit {
       this.project.website = this.projectForm.get('website')!.value;
       let obj = { ...this.projectForm.value };
       this.arr[this.i].email = obj.email;
-      let index=this.arr[this.i].id;
-      console.log(index)
-    this.edit.put<any>("http://localhost:3000/users/"+index,obj).subscribe()
+     this.editId=this.arr[this.i].id;
+  
+      this.edit.put<any>("http://localhost:3000/users/"+ this.editId,obj).subscribe()
     
   }
 
@@ -90,27 +91,6 @@ export class FormComponent implements OnInit {
   }
 
 
-  removeUser() {
-    this.editMode = false;
-    let index=this.arr[this.i].id;
-    let ask =
-      'This action will remove a user with this email: ' +
-      this.arr[this.i].email;
-    if (confirm(ask + `   Are you sure?`)) {
-      this.edit.delete('http://localhost:3000/users/' + index).subscribe();
-      this.arr.splice(this.i, 1);
-    } else {
-      this.removeuser = false;
-    }
-  }
-
-  get emailCtrl() : AbstractControl{
-   return this.projectForm.get('email') as AbstractControl; 
-  }
-
-  get email(): string{
-    return this.emailCtrl.value;
-  }
 
 
 }

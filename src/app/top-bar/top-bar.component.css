@@ -20,10 +20,7 @@ li a {
     font-size: 19px;
 }
 
-li a:hover {
-    background-color: #57b846;
-    color: #fff;
-}
+
 
 .active {
 

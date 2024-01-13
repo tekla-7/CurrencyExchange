@@ -13,6 +13,7 @@ export class UserComponent {
   onClickItem(): void {
     this.clickItem.emit();
     this.hidden=true;
+   
   }
  
 }

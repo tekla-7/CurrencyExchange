@@ -14,11 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { UserEditComponent } from './form/user/user-edit/user-edit.component';
 const appRouts:Routes=[
   {path:'',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'registering-employee',component:RegisteringEmployeeComponent},
   {path:'users',component:FormComponent},
+  {path:'users/:id',component:UserEditComponent},
   {path:'currency',component:HttpComponent}
 ]
 @NgModule({
@@ -32,7 +34,8 @@ const appRouts:Routes=[
     PaginationComponent,
     LoginComponent,
     TopBarComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

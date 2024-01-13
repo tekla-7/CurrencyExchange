@@ -1,11 +1,22 @@
-
 <ul class="position-relative">
-    <div class="m-l-2">
-  <li><a class="active"aria-current="page" routerLink="/">Home</a></li>
-  <li><a routerLink="registering-employee">Employees</a></li>
-  <li><a routerLink="currency">Currency</a></li>
-  <li><a routerLink="register">Register</a></li>
-  <li><a routerLink="users">Users</a></li>
-</div>
-  <li class="position-absolute "><a href="#about">Login</a></li>
+  <div class="m-l-2">
+    <li>
+      <a
+        routerLinkActive="active"
+        aria-current="page"
+        routerLink="/"
+        [routerLinkActiveOptions]="{exact:true}"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a routerLink="registering-employee" routerLinkActive="active"
+        >Employees</a
+      >
+    </li>
+    <li><a routerLink="currency" routerLinkActive="active">Currency</a></li>
+    <li><a routerLink="register" routerLinkActive="active">Register</a></li>
+    <li><a routerLink="users" routerLinkActive="active">Users</a></li>
+  </div>
+  <li class="position-absolute"><a href="#about">Login</a></li>
 </ul>

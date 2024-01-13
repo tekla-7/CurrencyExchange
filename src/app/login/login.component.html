@@ -38,7 +38,7 @@
               </span>
             </div>
             <div class="container-login-form-btn">
-              <button class="login-form-btn">Login</button>
+              <button class="login-form-btn" (click)="login()">Login</button>
             </div>
             <div class="text-center p-t-136">
               <span>
@@ -47,9 +47,8 @@
                   alt=""
                 />
               </span>
-              <a class="txt2" href="#">
+              <a class="txt2" (click)="register()" style="cursor: pointer;">
                 Create your Account
-
                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
               </a>
             </div>
