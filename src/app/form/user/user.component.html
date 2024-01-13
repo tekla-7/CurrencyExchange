@@ -1,9 +1,23 @@
 @if (user) {
-    <a class="list-group-item bb-5" (click)="onClickItem()">
-        <div><span class="bb"> E-mail: </span>{{ user.email }}</div>
-        <div><span class="bb"> Password: </span> {{ user.password }}</div>
-        <div><span class="bb"> Nickname: </span> {{ user.nickname }}</div>
-        <div><span class="bb"> Phone: </span> {{ user.phone }}</div>
-        <div><span class="bb"> Website:</span> {{ user.website }}</div>
-      </a>
+
+<a class="list-group-item bb-5 d-flex" (click)="onClickItem()">
+  <div><span class="bb"> E-mail: </span>{{ user.email }}</div>
+  <div><span class="bb"> Password: </span> {{ user.password }}</div>
+  <div><span class="bb"> Nickname: </span> {{ user.nickname }}</div>
+  <div><span class="bb"> Phone: </span> {{ user.phone }}</div>
+  <div><span class="bb"> Website:</span> {{ user.website }}</div>
+
+  <!-- <span class="d-flex justify-content-end" *ngIf="hidden">
+    <div
+      class="btn-group-vertical"
+      role="group"
+      aria-label="Vertical button group"
+    >
+      <button type="button" class="btn btn-primary" (click)="update()">
+        update
+      </button>
+      <button type="button" class="btn btn-primary">delate</button>
+    </div>
+  </span></a -->
+  </a>
 }

@@ -6,4 +6,5 @@ export interface UserDataType{
     phone?: string,
     website?:string,
     checkbox?: string,
+    id?:string
 }

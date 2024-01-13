@@ -2,28 +2,26 @@
   <div class="row">
     <form [formGroup]="employee" (ngSubmit)="submit()">
       <div class="form-group flex">
-        <label for="name">Name: </label>
         <input
           type="name"
-          id="name"
           class="form-controol"
           formControlName="name"
+          placeholder="Name:"
         />
       </div>
       <div class="form-group flex">
-        <label for="salary">Salary</label>
         <input
           type="number"
-          id="salary"
+          placeholder="Salary:"
           class="form-controol"
           formControlName="salary"
         />
       </div>
       <div class="form-group flex">
-        <label for="age">Age:</label>
+      
         <input
           type="number"
-          id="age"
+          placeholder="Age:"
           class="form-controol"
           formControlName="age"
         />

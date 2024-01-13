@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import {UserDataType} from '../interfaces/user.interfaces'
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -13,11 +15,9 @@ export class FormComponent implements OnInit {
   removeuser = false;
   arr :UserDataType[]= [];
   i: number=0;
-  project :UserDataType= {
-    
-  };
+  project :UserDataType= {};
   ngOnInit(): void {}
-  constructor(){
+  constructor(private edit:HttpClient){
     this.projectForm = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
@@ -45,10 +45,21 @@ export class FormComponent implements OnInit {
         // validators: passwordconfirm,
       }
     );
+    this.edit.get<any>("http://localhost:3000/users").subscribe((el) => {
+      for (let emp of el) {
+        let obj: UserDataType ={};
+        obj.email = emp.email;
+        obj.password = emp.password;
+        obj.nickname = emp.nickname;
+        obj.phone = emp.phone;
+        obj.website = emp.website;
+        obj.id=emp.id
+        this.arr.push(obj);
+      }
+    });
   }
 
   login() {
-    if (!this.editMode) {
       this.project.email = this!.projectForm.get('email')!.value;
       this.project.password = this.projectForm.get('password')!.value;
       this.project.confirmpassword =
@@ -56,20 +67,16 @@ export class FormComponent implements OnInit {
       this.project.nickname = this.projectForm.get('nickname')!.value;
       this.project.phone = this.projectForm.get('phone')!.value;
       this.project.website = this.projectForm.get('website')!.value;
-
-      let obj:UserDataType = { ...this.project };
-      this.arr.push(obj);
-      console.log(this.arr);
-    } else {
       let obj = { ...this.projectForm.value };
       this.arr[this.i].email = obj.email;
-      this.editMode = false;
-    }
+      let index=this.arr[this.i].id;
+      console.log(index)
+    this.edit.put<any>("http://localhost:3000/users/"+index,obj).subscribe()
+    
   }
 
 
   onEditItem(index: number) {
-    this.editMode = true;
     this.projectForm.patchValue({
       email: this.arr[index]!.email,
       password: this.arr[index].password,
@@ -79,15 +86,18 @@ export class FormComponent implements OnInit {
       website: this.arr[index].website,
     });
     this.i = index;
+    this.editMode=true;
   }
 
 
   removeUser() {
     this.editMode = false;
+    let index=this.arr[this.i].id;
     let ask =
       'This action will remove a user with this email: ' +
       this.arr[this.i].email;
     if (confirm(ask + `   Are you sure?`)) {
+      this.edit.delete('http://localhost:3000/users/' + index).subscribe();
       this.arr.splice(this.i, 1);
     } else {
       this.removeuser = false;

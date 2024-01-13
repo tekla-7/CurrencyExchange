@@ -10,7 +10,17 @@ import { UserComponent } from './form/user/user.component';
 import { RegisteringEmployeeComponent } from './registering-employee/registering-employee.component';
 import { EmployeesComponent } from './registering-employee/employees/employees.component';
 import { PaginationComponent } from './registering-employee/pagination/pagination.component';
-
+import { LoginComponent } from './login/login.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+const appRouts:Routes=[
+  {path:'',component:LoginComponent},
+  {path:'register',component:RegisterComponent},
+  {path:'registering-employee',component:RegisteringEmployeeComponent},
+  {path:'users',component:FormComponent},
+  {path:'currency',component:HttpComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +29,17 @@ import { PaginationComponent } from './registering-employee/pagination/paginatio
     UserComponent,
     RegisteringEmployeeComponent,
     EmployeesComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginComponent,
+    TopBarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRouts)
   ],
   providers: [],
   bootstrap: [AppComponent]
