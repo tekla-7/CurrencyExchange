@@ -25,3 +25,13 @@ align-items: center;
 .flex input{
     width: 70%;
 }
+.container {
+    width: 80%;
+    aspect-ratio: 5/2.5;
+    padding: 40px;
+    margin-top: 30px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-padding: 20px;
+  }

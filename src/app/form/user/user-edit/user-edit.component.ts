@@ -9,6 +9,7 @@ import { UserDataType } from '../../../interfaces/user.interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Subscription, map } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -25,9 +26,12 @@ export class UserEditComponent implements OnInit {
   editId: any;
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    if(this.id==this.loginservice.isLoggedId){
+      this.editMode=true
+    }else{this.editMode=false}
     this.onEditItem(this.id)
   }
-  constructor(private edit: HttpClient, private route: ActivatedRoute) {
+  constructor(private edit: HttpClient, private route: ActivatedRoute , private loginservice:LoginService) {
     this.projectForm = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
@@ -73,6 +77,7 @@ onEditItem(id:any) {
   }
   login() {
     let obj = { ...this.projectForm.value };
+    if(this.id==this.loginservice.isLoggedId){
     let ask =
       'This action will update a user with this email: '
     if (confirm(ask + `   Are you sure?`)) {
@@ -80,19 +85,20 @@ onEditItem(id:any) {
       .put<any>('http://localhost:3000/users/' + this.id, obj)
       .subscribe();
       console.log('this is'+this.id)
-    } else {
-      
-    }
-    
+    } else {}
+    }else{alert('You do not have permission to change/delete this user')}
   }
 
   removeUser() {
+    if(this.id==this.loginservice.isLoggedId){
     console.log(this.id)
     let ask =
       'This action will remove a user with this email: '
     if (confirm(ask + `   Are you sure?`)) {
       this.edit.delete('http://localhost:3000/users/' + this.id).subscribe();
-    } else {}
+    } else {}}else{
+      alert('You do not have permission to change/delete this user')
+    }
   }
 
  

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HttpComponent } from './http/http.component';
-import {FormsModule ,ReactiveFormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
 import { UserComponent } from './form/user/user.component';
@@ -15,14 +15,20 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { UserEditComponent } from './form/user/user-edit/user-edit.component';
-const appRouts:Routes=[
-  {path:'',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'registering-employee',component:RegisteringEmployeeComponent},
-  {path:'users',component:FormComponent},
-  {path:'users/:id',component:UserEditComponent},
-  {path:'currency',component:HttpComponent}
-]
+import { loginGuard } from './guards/login.guard';
+import { homeGuard } from './guards/home.guard';
+const appRouts: Routes = [
+  { path: '', component: LoginComponent, canActivate:[homeGuard]},
+  { path: 'register', component: RegisterComponent },
+  { path: 'registering-employee', component: RegisteringEmployeeComponent },
+  { path: 'users', component: FormComponent ,canActivate: [loginGuard],},
+  {
+    path: 'users/:id',
+    component: UserEditComponent,
+    canActivate: [loginGuard],
+  },
+  { path: 'currency', component: HttpComponent },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,16 +41,16 @@ const appRouts:Routes=[
     LoginComponent,
     TopBarComponent,
     RegisterComponent,
-    UserEditComponent
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRouts)
+    RouterModule.forRoot(appRouts),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

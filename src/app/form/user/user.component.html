@@ -1,8 +1,8 @@
 @if (user) {
 
-<a class="list-group-item bb-5 d-flex" (click)="onClickItem()" [routerLink]="['/users',user.id]">
+<a class="list-group-item bb-5 d-flex p-l-r-20" (click)="onClickItem()" [routerLink]="['/users',user.id]">
   <div><span class="bb"> E-mail: </span>{{ user.email }}</div>
-  <div><span class="bb"> Password: </span> {{ user.password }}</div>
+  <div><span class="bb"> Password: </span> <span class="password">{{ user.password }}</span></div>
   <div><span class="bb"> Nickname: </span> {{ user.nickname }}</div>
   <div><span class="bb"> Phone: </span> {{ user.phone }}</div>
   <div><span class="bb"> Website:</span> {{ user.website }}</div>

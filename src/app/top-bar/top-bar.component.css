@@ -20,7 +20,11 @@ li a {
     font-size: 19px;
 }
 
-
+div.sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+  }
 
 .active {
 
