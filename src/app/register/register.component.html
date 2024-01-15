@@ -68,6 +68,7 @@
           </label>
         </div>
         <!-- [disabled]="projectForm.invalid" -->
+        <div class="incorect" *ngIf="useristaken">This data has already been used</div>
         <button type="submit" class="btn btn-success" >
          Register
         </button>

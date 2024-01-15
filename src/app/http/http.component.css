@@ -10,3 +10,9 @@
    margin-top:10%;
    margin-left: 5%;
 }
+.from-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

@@ -26,3 +26,10 @@ align-items: center;
 .flex input{
     width: 70%;
 }
+.incorect{
+    font-family: Poppins-Medium;
+    color: #eb4949;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}

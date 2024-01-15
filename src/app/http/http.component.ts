@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 @Component({
   selector: 'app-http',
   templateUrl: './http.component.html',
@@ -19,6 +20,7 @@ export class HttpComponent implements OnInit {
   conversion_rate: any;
   valueLeft: any;
   valueRight: any;
+  userId: any;
   projecthttp: FormGroup = new FormGroup({
     ExchangeRateLeft: new FormGroup({
       currency: new FormControl(null),
@@ -29,7 +31,10 @@ export class HttpComponent implements OnInit {
       amount: new FormControl(null),
     }),
   });
-  constructor(private http: HttpClient) {
+  ngOnInit(): void {}
+  constructor(private http: HttpClient, private loginservice: LoginService) {
+    this.userId = this.loginservice.isLoggedId;
+
     this.projecthttp.valueChanges.subscribe((element) => {
       this.SellingCurrency = element.ExchangeRateLeft.currency;
       this.BuyingCurrency = element.ExchangeRateRight.currency;
@@ -46,9 +51,7 @@ export class HttpComponent implements OnInit {
             '/' +
             this.BuyingCurrency
         )
-        .subscribe(
-          (data) => ((this.conversion_rate = data))
-        );
+        .subscribe((data) => (this.conversion_rate = data));
 
       if (this.SellingCurrencyValue) {
         this.valueLeft =
@@ -61,6 +64,6 @@ export class HttpComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  
   // ngOnChanges(changes: SimpleChanges): void {}
 }

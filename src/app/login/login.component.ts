@@ -13,6 +13,7 @@ import { of } from 'rxjs';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  incorect=false;
   public form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -43,13 +44,15 @@ export class LoginComponent {
           );
         });
         if (user) {
+          this.incorect=false;
           this.logginService.isLoggedIn = true;
           this.logginService.LoginOrLogout.next('Logout');
           this.form.reset();
           this.router.navigate(['/users']);
         } else {
-          this.logginService.isLoggedIn = false;
+          this.incorect=true;
           this.logginService.LoginOrLogout.next('Login');
+
         }
       });
   }

@@ -8,7 +8,7 @@ import {
 import { UserDataType } from '../../../interfaces/user.interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Subscription, map } from 'rxjs';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class UserEditComponent implements OnInit {
     }else{this.editMode=false}
     this.onEditItem(this.id)
   }
-  constructor(private edit: HttpClient, private route: ActivatedRoute , private loginservice:LoginService) {
+  constructor(private edit: HttpClient, private route: ActivatedRoute , private loginservice:LoginService ,  private router:Router) {
     this.projectForm = new FormGroup(
       {
         email: new FormControl(null, [Validators.required, Validators.email]),
@@ -100,6 +100,8 @@ onEditItem(id:any) {
       alert('You do not have permission to change/delete this user')
     }
   }
-
+  userlist(){
+    this.router.navigate(['/users']);
+  }
  
 }

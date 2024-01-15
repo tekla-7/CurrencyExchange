@@ -13,4 +13,5 @@ export class LoginService {
   LoginOrLogout = new Subject<string>;
   public isLoggedIn = false;
   public isLoggedId:any;
+  public CurrencyexchangeShow=false;
 }

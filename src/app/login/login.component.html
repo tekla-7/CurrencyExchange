@@ -7,7 +7,7 @@
           alt="IMG"
         />
       </div>
-      <form class="login-form" (ngSubmit)="login()" [formGroup]="form">
+      <form class="login-form " (ngSubmit)="login()" [formGroup]="form">
         <div class="wrap-input">
           <input class="input" type="email" name="email" placeholder="Email" formControlName="email">
           <span class="symbol-input">
@@ -32,6 +32,7 @@
             />
           </span>
         </div>
+        <div  class="incorect"   *ngIf="incorect">The data is incorrect</div>
         <div class="container-login-form-btn">
           <button class="login-form-btn" type="submit">Login</button>
         </div>

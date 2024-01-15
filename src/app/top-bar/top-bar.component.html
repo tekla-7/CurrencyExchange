@@ -15,9 +15,12 @@
         >Employees</a
       >
     </li>
-    <li><a routerLink="currency" routerLinkActive="active">Currency</a></li>
+    <li *ngIf="LoginOrLogout|async as Islogin"><a *ngIf="Islogin === 'Logout'" routerLink="currency" routerLinkActive="active">Currency</a></li>
     <li><a routerLink="register" routerLinkActive="active">Register</a></li>
-    <li><a routerLink="users"  routerLinkActive="active">Users</a></li>
+    <li *ngIf="LoginOrLogout|async as Islogin"><a *ngIf="Islogin === 'Logout'"
+      routerLink="users"   routerLinkActive="active">
+     Users
+    </a></li>
   </div>
   <!-- {{ isloged ? 'Logout' : 'Login' }} -->
   <li class="position-absolute" routerLink="/" (click)="logout()"><a href="#about">{{LoginOrLogout|async}}</a></li>
