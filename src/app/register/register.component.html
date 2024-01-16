@@ -67,9 +67,9 @@
             <p>i have read the <span style="color: blue">agreement</span></p>
           </label>
         </div>
-        <!-- [disabled]="projectForm.invalid" -->
+        
         <div class="incorect" *ngIf="useristaken">This data has already been used</div>
-        <button type="submit" class="btn btn-success" >
+        <button type="submit" class="btn btn-success" [disabled]="projectForm.invalid" >
          Register
         </button>
       </form>

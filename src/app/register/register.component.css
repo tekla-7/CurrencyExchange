@@ -6,7 +6,8 @@ input.ng-dirty.ng-invalid {
     margin-bottom: 25px;
 }
 .mt{
-    margin-top: 50px;
+    margin-top: 10%;
+    margin-left: 16%;
 }
 .bb{
     font-size: 15px;

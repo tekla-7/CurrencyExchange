@@ -21,6 +21,7 @@ export class HttpComponent implements OnInit {
   valueLeft: any;
   valueRight: any;
   userId: any;
+  
   projecthttp: FormGroup = new FormGroup({
     ExchangeRateLeft: new FormGroup({
       currency: new FormControl(null),

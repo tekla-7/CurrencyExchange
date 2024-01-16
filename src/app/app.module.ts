@@ -18,6 +18,7 @@ import { UserEditComponent } from './form/user/user-edit/user-edit.component';
 import { loginGuard } from './guards/login.guard';
 import { homeGuard } from './guards/home.guard';
 import { currencyexchangeGuard } from './guards/currencyexchange.guard';
+
 const appRouts: Routes = [
   { path: '', component: LoginComponent, canActivate:[homeGuard]},
   { path: 'register', component: RegisterComponent },
@@ -43,6 +44,7 @@ const appRouts: Routes = [
     TopBarComponent,
     RegisterComponent,
     UserEditComponent,
+   
   ],
   imports: [
     BrowserModule,

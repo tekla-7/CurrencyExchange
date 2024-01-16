@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { UserDataType } from '../interfaces/user.interfaces';
 import { HttpClient } from '@angular/common/http';
+import { passwordvalidator } from './passwordconfirm-validator';
 
 @Component({
   selector: 'app-register',
@@ -44,7 +45,7 @@ export class RegisterComponent {
       },
 
       {
-        // validators: passwordconfirm,
+        validators: passwordvalidator,
       }
     );
   }
@@ -75,5 +76,7 @@ export class RegisterComponent {
           this.useristaken=true;
         }
       });
+      this.projectForm.reset();
+
   }
 }
